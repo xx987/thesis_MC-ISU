@@ -6,8 +6,8 @@ y <- c(52.21, 53.12, 54.48, 55.84, 57.20, 58.57, 59.93, 61.29, 63.11, 64.47, 66.
 cx <- rbind(x,onec)
 coe <- solve(cx %*% t(cx))##this is (x^T*x)^-1
 # Set the number of iterations and burn-in period for MCMC
-num_iterations <- 15000#num_iterations <- 30000
-burn_in <- 5000#burn_in <- 1000
+num_iterations <- 55000#num_iterations <- 30000
+#burn_in <- 55000#burn_in <- 1000
 b_hat <- coe%*% cx %*% y
 svar <-t((y-t(cx)%*%b_hat))%*% ((y-t(cx)%*%b_hat))
 
@@ -88,10 +88,10 @@ for (i in 1:num_iterations) {
 
 
 # Print the posterior means
-sampled_alpha=sampled_alpha[5000:num_iterations]
-sampled_beta=sampled_beta[5000:num_iterations]
-sampled_lambda=sampled_lambda[5000:num_iterations]
-sampled_sigma=sampled_sigma[5000:num_iterations]
+sampled_alpha=sampled_alpha[10000:num_iterations]
+sampled_beta=sampled_beta[10000:num_iterations]
+sampled_lambda=sampled_lambda[10000:num_iterations]
+sampled_sigma=sampled_sigma[10000:num_iterations]
 
 mean(sampled_alpha)
 mean(sampled_beta)
